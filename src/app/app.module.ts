@@ -10,7 +10,7 @@ import {
   DataTableModule,
   DropdownModule,
   FieldsetModule,
-  MenubarModule,
+  MenubarModule, MultiSelectModule,
   PanelModule,
   RadioButtonModule,
   SharedModule,
@@ -19,20 +19,28 @@ import {
 import {AppComponent} from "./app.component";
 import {HttpService} from "./fapi/http.service";
 import {PriceListComponent} from "./av/priceList/priceList.component";
-import {CarCatalogComponent} from "./av/carCatalog/carCatalog.component";
+import {CatalogCarComponent} from "./av/catalogList/catalogCar/catalogCar.component";
 import {PriceProductComponent} from "./av/priceList/priceProduct.component";
 import {RouterModule, Routes} from "@angular/router";
 import {CatalogListComponent} from "./av/catalogList/catalogList.component";
 import {CatalogOilComponent} from "./av/catalogList/catalogOil/catalogOil.component";
+import {CatalogTiresComponent} from "./av/catalogList/catalogTires/catalogTires.component";
+import {FilterComponent} from "./av/filterList/filter.component";
+import {FilterListComponent} from "./av/filterList/filterList.component";
+import {CatalogAutoChemistryComponent} from "./av/catalogList/autoChemistry/catalogAutoChemistry.component";
 
 const appRoutes: Routes = [
   {path: '', component: CatalogListComponent},
-  {path: 'catalogList/oil', component: PriceListComponent}
+  {path: 'catalogList/oil', component: CatalogOilComponent},
+  {path: 'catalogList/tires', component: CatalogTiresComponent},
+  {path: 'catalogList/autoChemistry', component: CatalogAutoChemistryComponent}
 ];
 
 
 @NgModule({
-  imports: [BrowserModule,
+  imports: [
+    RouterModule.forRoot(appRoutes),
+    BrowserModule,
     DataTableModule,
     CarouselModule,
     SharedModule,
@@ -49,16 +57,22 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     JsonpModule,
-    RouterModule.forRoot(appRoutes)
+    MultiSelectModule
+
   ],
   providers: [HttpService],
   declarations: [
     AppComponent,
-    CarCatalogComponent,
+    CatalogCarComponent,
     PriceProductComponent,
     PriceListComponent,
     CatalogListComponent,
-    CatalogOilComponent
+    CatalogOilComponent,
+    CatalogTiresComponent,
+    CatalogAutoChemistryComponent,
+    FilterComponent,
+    FilterListComponent
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,21 @@
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+  <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+  <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+</div>
+
+<p-dataTable [value]="priceProductList" [rows]="20" [paginator]="true" [pageLinks]="3"
+             [rowsPerPageOptions]="[5,10,20]"
+             selectionMode="single"
+             [globalFilter]="gb" #d>
+  <p-header>Данные о товарах</p-header>
+  <p-column field="mfd" header="Бренд" [sortable]="true"></p-column>
+  <p-column field="n" header="Номер" [sortable]="true"></p-column>
+  <p-column field="d" header="Описание" [sortable]="true" [style]="{'width':'45%'}"></p-column>
+  <p-column field="q" header="Количество" [sortable]="true"></p-column>
+  <p-column field="p" header="Цена" [sortable]="true"></p-column>
+  <p-column [style]="{'width':'5%','text-align':'center'}" header="...">
+    <ng-template let-car="rowData" pTemplate="body">
+      <button type="button" pButton icon="fa-share"></button>
+    </ng-template>
+  </p-column>
+</p-dataTable>

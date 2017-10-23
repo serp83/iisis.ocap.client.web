@@ -22,10 +22,11 @@ export class AppComponent {
         label: 'Каталоги',
         items: [
           {label: 'Масла', url: '/catalogList/oil'},
-          {label: 'Шины', url: '/catalogList/oil'},
-          {label: 'Автохимия', url: '/catalogList/oil'},
+          {label: 'Шины', url: '/catalogList/tires'},
+          {label: 'Автохимия', url: 'catalogList/autoChemistry'},
           {label: 'Щетки Стеклоочистителя', url: '/catalogList/oil'},
-          {label: 'Выхлопная система', url: '/catalogList/oil'}
+          {label: 'Выхлопная система', url: '/catalogList/oil'},
+          {label: 'Инструменты', url: '/catalogList/oil'}
           ]
       }
     ];
