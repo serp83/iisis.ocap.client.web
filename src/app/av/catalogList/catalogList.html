@@ -1,0 +1,52 @@
+<div class="ui-g">
+  <div class="ui-g-2">
+    <p-panel header="Качество">
+      <div class="ui-g" style="width:250px;margin-bottom:10px">
+        <div class="ui-g-12">
+          <p-radioButton name="group1" value="Option 1" label="Option 1" [(ngModel)]="val1"
+                         inputId="opt1"></p-radioButton>
+        </div>
+        <div class="ui-g-12">
+          <p-radioButton name="group1" value="Option 2" label="Option 2" [(ngModel)]="val1"
+                         inputId="opt2"></p-radioButton>
+        </div>
+        <div class="ui-g-12">
+          <p-radioButton name="group1" value="Option 3" label="Option 3" [(ngModel)]="val1"
+                         inputId="opt3"></p-radioButton>
+        </div>
+      </div>
+    </p-panel>
+    <p-panel header="Цена">
+
+      <div>{{val}}</div>
+      <p-slider [(ngModel)]="val" [min]="0" [max]="100" [range]="true"></p-slider>
+    </p-panel>
+  </div>
+  <div class="ui-g-10">
+    <p-carousel headerText="Каталоги" [value]="catalogList">
+      <ng-template let-item pTemplate="item">
+        <div class="ui-grid ui-grid-responsive">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+              <img src="/assets/Audi.png" width="60">
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">{{item.d}}</div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+              <button type="button" pButton icon="fa-search"></button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>
+
+
+
+
+
+
