@@ -1,0 +1,26 @@
+<div class="ui-g">
+  <div class="ui-g-2">
+
+  </div>
+  <div class="ui-g-10">
+    <p-dataTable [value]="plByNumber" selectionMode="single" [(selection)]="selectedP" (onRowSelect)="handleRowSelect($event)">
+      <p-column field="mfd" header="Бренд"></p-column>
+      <p-column field="n" header="Артикул"></p-column>
+      <p-column field="d" header="Описание"></p-column>
+    </p-dataTable>
+
+    <priceListComponent [priceProductList]="priceProductList"></priceListComponent>
+    <priceListComponent [priceProductList]="priceProductAnalogList"></priceListComponent>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+#squaresWaveG{
+  position:relative;
+  width:42px;
+  height:5px;
+  margin-left: 50%;
+  margin-top: 13px;
+}
+
+.squaresWaveG{
+  position:absolute;
+  top:0;
+  background-color:rgb(245,245,245);
+  width:5px;
+  height:5px;
+  animation-name:bounce_squaresWaveG;
+  animation-duration:1.69s;
+  animation-iteration-count:infinite;
+  animation-direction:normal;
+}
+
+#squaresWaveG_1{
+  left:0;
+  animation-delay:0.68s;
+}
+
+#squaresWaveG_2{
+  left:5px;
+  animation-delay:0.85s;
+}
+
+#squaresWaveG_3{
+  left:10px;
+  animation-delay:1.01s;
+}
+
+#squaresWaveG_4{
+  left:16px;
+  animation-delay:1.18s;
+}
+
+#squaresWaveG_5{
+  left:21px;
+  animation-delay:1.35s;
+}
+
+#squaresWaveG_6{
+  left:26px;
+  animation-delay:1.52s;
+}
+
+#squaresWaveG_7{
+  left:31px;
+  animation-delay:1.69s;
+}
+
+#squaresWaveG_8{
+  left:37px;
+  animation-delay:1.86s;
+}
+
+
+
+@keyframes bounce_squaresWaveG{
+  0%{
+    background-color:rgb(136,183,219);
+  }
+
+  100%{
+    background-color:rgba(255,255,255,0);
+  }
+}

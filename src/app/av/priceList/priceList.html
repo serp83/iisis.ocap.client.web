@@ -3,19 +3,57 @@
   <input #gb type="text" pInputText size="50" placeholder="Global Filter">
 </div>
 
-<p-dataTable [value]="priceProductList" [rows]="20" [paginator]="true" [pageLinks]="3"
-             [rowsPerPageOptions]="[5,10,20]"
+<p-dataTable [value]="priceProductList" [rows]="5" [paginator]="true" [pageLinks]="3"
+             [rowsPerPageOptions]="[5,10,20]" expandableRows="true"
              selectionMode="single"
              [globalFilter]="gb" #d>
   <p-header>Данные о товарах</p-header>
-  <p-column field="mfd" header="Бренд" [sortable]="true"></p-column>
+  <p-column field="mfd" header="Бренд" [sortable]="true">
+    <!--<ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">-->
+      <!--<img src="{{getImageUrl(item)}}" width="5%" height="5%">-->
+      <!--<span>{{item[col.field]}}</span>-->
+    <!--</ng-template>-->
+  </p-column>
   <p-column field="n" header="Номер" [sortable]="true"></p-column>
   <p-column field="d" header="Описание" [sortable]="true" [style]="{'width':'45%'}"></p-column>
   <p-column field="q" header="Количество" [sortable]="true"></p-column>
   <p-column field="p" header="Цена" [sortable]="true"></p-column>
-  <p-column [style]="{'width':'5%','text-align':'center'}" header="...">
-    <ng-template let-car="rowData" pTemplate="body">
-      <button type="button" pButton icon="fa-share"></button>
-    </ng-template>
-  </p-column>
+  <p-column expander="true" styleClass="col-icon"></p-column>
+  <!--<p-column [style]="{'width':'5%','text-align':'center'}" header="...">-->
+    <!--<ng-template let-car="rowData" pTemplate="body">-->
+      <!--<button type="button" pButton icon="fa-share"></button>-->
+    <!--</ng-template>-->
+  <!--</p-column>-->
+
+  <ng-template let-item pTemplate="rowexpansion">
+    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-3" style="text-align:center">
+          <!--<i class="fa fa-search" style="cursor:pointer;float:left;margin-top:40px"></i>-->
+          <img src="{{getImageUrl(item)}}" width="100%">
+        </div>
+        <div class="ui-grid-col-9">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad">
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Описание</div>
+              <div class="ui-grid-col-10">{{item.d}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Артикул</div>
+              <div class="ui-grid-col-10">{{item.n}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Brand: </div>
+              <div class="ui-grid-col-10">{{item.mfd}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Цена: </div>
+              <div class="ui-grid-col-10">{{item.p}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
 </p-dataTable>

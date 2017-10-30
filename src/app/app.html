@@ -1,22 +1,11 @@
+<p-menubar [model]="menuItemList">
+  <searchComponent></searchComponent>
 
 
-
-<p-menubar [model]="items">
-    <input type="text" pInputText placeholder="Введите артикул">
-    <button pButton label="Поиск" icon="sign-out"></button>
 </p-menubar>
 
 
 <router-outlet></router-outlet>
-
-<p-fieldset legend="Описание проекта" [toggleable]="true">
-    Дорогие друзья. На этом ресурсе вы сможете следить за процессом разработки Интернет-магазина автозапчастей.<br>
-    Обсуждение разработки происходит в группе <a href="https://t.me/ocap_dev">Telegram</a>
-</p-fieldset>
-
-<p-fieldset legend="Партнерство" [toggleable]="true">
-    Для участия в проекте вы должны пройти модерацию в нашей группе телеграмм и внести первоначальный взнос за участие.
-</p-fieldset>
 
 
 

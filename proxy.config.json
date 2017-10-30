@@ -3,5 +3,10 @@
     "target": "http://91.144.179.136:9090",
     "secure":false,
     "logLevel":"debug"
+  },
+  "/fapi/*":{
+    "target": "http://fapi.iisis.ru:80",
+    "secure":false,
+    "logLevel":"debug"
   }
 }

@@ -1,46 +1,36 @@
 import {Component, Input} from '@angular/core';
-import {HttpService} from "../../fapi/http.service";
-import {ParameterListRow, ParameterValueListRow} from "./filterList.component";
-
-export class FilterItem {
-  label: string;
-  value: string;
-
-  constructor(label: string, value: string) {
-    this.label = label;
-    this.value = value;
-  }
-}
+import {Filter, FilterListRow,} from "./filterList.component";
+import {CatalogListService} from "../catalogList/catalogList.component";
 
 @Component({
   moduleId: module.id,
   selector: 'filterComponent',
-  templateUrl: './filter.html'
+  template: `
+    <p-panel header="{{filterListRow_.d}}" [toggleable]="true" [collapsed]="false">
+      <p-multiSelect (onChange)="onChange()" [options]="filterListRow_.filterValueList"
+                     [(ngModel)]="filterListRow_.selectedFilterList">
+        <!--<ng-template let-param let-i="index" pTemplate="item" >-->
+        <!--<div style="font-size:14px;float:right;margin-top:4px">{{param.d}}</div>-->
+        <!--</ng-template>-->
+      </p-multiSelect>
+      <!--<p-listbox [options]="filterItemList" [(ngModel)]="selectedFilterItemList" multiple="multiple" checkbox="checkbox" filter="filter" optionLabel="name" [listStyle]="{'max-height':'200px'}">-->
+      <!--</p-listbox>-->
+    </p-panel>`
 
 })
-export class FilterComponent {
-
-  public filterItemList: FilterItem[] = new Array();
-  public selectedFilterItemList: string[];
-  @Input() public parameterListRow: ParameterListRow;
-  public parameterValueList_: ParameterValueListRow[];
-
+export class FilterComponent extends Filter {
   @Input()
-  set parameterValueList(list: ParameterValueListRow[]) {
-    if(list){
-      for (var i = 0; i < list.length; i++) {
-        if (list[i].prmi != this.parameterListRow.i) continue;
-
-        this.filterItemList.push(new FilterItem(list[i].v, list[i].v))
-      }
-    }
-
-
+  set filterListRow(filterListRow: FilterListRow) {
+    this.setFilterListRow(filterListRow);
   }
 
+  constructor(private catalogListService: CatalogListService) {
+    super();
+  }
 
-  constructor(private httpService: HttpService) {
-
+  onChange() {
+    console.log(this.filterListRow_.selectedFilterList);
+    this.catalogListService.getPriceProductList();
   }
 
 }

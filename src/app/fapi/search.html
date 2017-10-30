@@ -1,0 +1,15 @@
+
+<input type="text" pInputText placeholder="Введите артикул"  name="value" [(ngModel)]="value" (keyup.enter)="onSearch(value)">
+
+<!--<button pButton label="Поиск" icon="sign-out" [routerLink]="['/analogList']" (click)="this.find()"></button>-->
+<button pButton label="Поиск" icon="sign-out" (click)="onSearch(value)"></button>
+
+
+
+
+
+
+
+
+
+

@@ -5,11 +5,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpModule, JsonpModule} from "@angular/http";
 import {
   AccordionModule,
-  ButtonModule, CarouselModule,
-  CheckboxModule,
+  ButtonModule, CarouselModule, ChartModule,
+  CheckboxModule, DataGridModule,
   DataTableModule,
   DropdownModule,
-  FieldsetModule,
+  FieldsetModule, ListboxModule,
   MenubarModule, MultiSelectModule,
   PanelModule,
   RadioButtonModule,
@@ -17,23 +17,28 @@ import {
   SliderModule
 } from "primeng/primeng";
 import {AppComponent} from "./app.component";
-import {HttpService} from "./fapi/http.service";
+import {HttpService} from "./http.service";
 import {PriceListComponent} from "./av/priceList/priceList.component";
 import {CatalogCarComponent} from "./av/catalogList/catalogCar/catalogCar.component";
 import {PriceProductComponent} from "./av/priceList/priceProduct.component";
 import {RouterModule, Routes} from "@angular/router";
-import {CatalogListComponent} from "./av/catalogList/catalogList.component";
+import {CatalogListComponent, CatalogListService} from "./av/catalogList/catalogList.component";
 import {CatalogOilComponent} from "./av/catalogList/catalogOil/catalogOil.component";
 import {CatalogTiresComponent} from "./av/catalogList/catalogTires/catalogTires.component";
 import {FilterComponent} from "./av/filterList/filter.component";
 import {FilterListComponent} from "./av/filterList/filterList.component";
 import {CatalogAutoChemistryComponent} from "./av/catalogList/autoChemistry/catalogAutoChemistry.component";
+import {FilterCheckBoxComponent} from "./av/filterList/filterCheckBox.component";
+import {FilterSliderComponent} from "./av/filterList/filterSlider.component";
+import {FapiComponent, FapiService} from "./fapi/fapi.component";
+import {SearchComponent} from "./fapi/search.component";
 
 const appRoutes: Routes = [
   {path: '', component: CatalogListComponent},
   {path: 'catalogList/oil', component: CatalogOilComponent},
   {path: 'catalogList/tires', component: CatalogTiresComponent},
-  {path: 'catalogList/autoChemistry', component: CatalogAutoChemistryComponent}
+  {path: 'catalogList/autoChemistry', component: CatalogAutoChemistryComponent},
+  {path: 'analogList', component: FapiComponent}
 ];
 
 
@@ -57,10 +62,12 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     JsonpModule,
-    MultiSelectModule
-
+    ChartModule,
+    DataGridModule,
+    MultiSelectModule,
+    ListboxModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, FapiService, CatalogListService],
   declarations: [
     AppComponent,
     CatalogCarComponent,
@@ -71,7 +78,11 @@ const appRoutes: Routes = [
     CatalogTiresComponent,
     CatalogAutoChemistryComponent,
     FilterComponent,
-    FilterListComponent
+    FilterListComponent,
+    FilterCheckBoxComponent,
+    FilterSliderComponent,
+    FapiComponent,
+    SearchComponent
 
   ],
   bootstrap: [AppComponent]

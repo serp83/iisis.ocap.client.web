@@ -5,8 +5,7 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import "rxjs/Observable";
 import "rxjs/add/observable/throw";
-import {PriceProduct} from "../av/xsd/v2017/priceProductList";
-declare var chrome: any;
+import {PriceProduct} from "./av/xsd/v2017/priceProductList";
 
 
 @Injectable()
@@ -15,7 +14,7 @@ export class HttpService {
     constructor(private http: Http) {
     }
 
-    getObjectList(URL: string): Observable<Array<any>> {
+    getObjectListGET(URL: string): Observable<any> {
         // return this.http.get(ConstantList.FAPI_URL + "/ruca?ui=00000000-0000-0000-0000-000000000000" + param)
         // return this.http.get("/json/priceProductList.json")
         // "/api?ui=00000000-0000-0000-0000-000000000000" + p + "&json=.json")
@@ -24,6 +23,14 @@ export class HttpService {
             .catch(this.handleError);
     }
 
+  getObjectListPOST(URL: string, body:any): Observable<any> {
+    // return this.http.get(ConstantList.FAPI_URL + "/ruca?ui=00000000-0000-0000-0000-000000000000" + param)
+    // return this.http.get("/json/priceProductList.json")
+    // "/api?ui=00000000-0000-0000-0000-000000000000" + p + "&json=.json")
+    return this.http.post(URL + "?ui=00000000-0000-0000-0000-000000000000", body, "Accept:application/json")
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
 
 
     private extractData(res: Response) {
